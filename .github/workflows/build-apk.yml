@@ -25,7 +25,7 @@ jobs:
         run: |
           unzip SocialDownloader_Mobile_Cloud_Build.zip -d extracted
           cd extracted/SocialDownloader_Final
-          printf '\nandroid {\n    compileOptions {\n        sourceCompatibility JavaVersion.VERSION_17\n        targetCompatibility JavaVersion.VERSION_17\n    }\n}\n' >> app/build.gradle
+          sed -i 's/VERSION_1_8/VERSION_17/g' app/build.gradle
           gradle --no-daemon assembleDebug
 
       - name: Upload APK
